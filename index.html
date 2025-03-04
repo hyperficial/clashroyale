@@ -1,4 +1,130 @@
 <!doctype html>
+<style>
+    .projects {
+	display: grid;
+	max-width: 100%;
+	grid-template-columns: 100%;
+}
+
+a {
+	color: white;
+	text-underline-offset: 0.1em;
+	overflow-wrap: anywhere;
+	outline: none;
+}
+.projects a {
+	width: 32rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+	padding: 1rem !important; /* fuck css specificity bro :sob: */
+	max-width: 100%;
+}
+
+.glassy {
+	background-color: #fff3;
+	/*
+	removed for now bc it's really freaking laggy
+	backdrop-filter: blur(10px);
+	*/
+	border-radius: 16px;
+	border: thin solid #fff3;
+	padding: 0.1rem;
+	user-select: none;
+}
+a.glassy {
+	transition: background-color 1s ease;
+	text-decoration: none;
+}
+a.glassy:hover {
+	background-color: rgba(255, 0, 0, 0.133);
+}
+
+.people {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	gap: 1rem;
+	width: 100%;
+	max-width: 56rem;
+}
+.people a.glassy {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 2rem;
+	height: 3.5rem;
+	text-align: center;
+	scroll-margin-top: 40vh;
+}
+.people a.glassy img {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+}
+
+.people article {
+	background-color: #5b5466;
+	z-index: 1;
+	position: fixed;
+	top: 50%;
+	top: 50lvh;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease, visibility 2s 1s;
+	padding: 1.5rem 0.75rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 16px;
+	width: 32rem;
+	max-width: 100%;
+}
+.people h2 {
+	margin-top: 0;
+}
+.people p {
+	max-width: 24rem;
+	margin: 0;
+}
+.people a:target + article,
+.people a:target ~ a[href="#_"] {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+a[href="#_"] {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	height: 100lvh;
+	background-color: #0005;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease, visibility 0s 0.3s;
+	cursor: default;
+	backdrop-filter: blur(4px);
+}
+body:has(.people a:target) {
+	overflow: hidden;
+}
+
+th,
+td {
+	border: 3px solid #7c7685;
+	padding: 0.5rem;
+	width: min-content;
+}
+table {
+	border-collapse: collapse;
+	margin-top: 1.5rem;
+	width: 100%;
+}
+</style>
 <iframe style="width: 50rem;height:25rem"src="https://www.greenfoot.org/scenarios/27793?embed=true"></iframe>
 <div class="people">
     <a class="glassy" target="_self" href="#entr" id="entr">
